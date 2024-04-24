@@ -1,10 +1,10 @@
-###CMAKE###
+###CMAKE
 On ubuntu type in terinal:
 ```
 sudo apt get install cmake
 sudo apt get install make
 ```
-###BUILDING###
+###BUILDING
 Create directory build:
 ```
 mkdir build
