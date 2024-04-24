@@ -4,7 +4,7 @@ int main()
 {
 	LinkedList lista;
 
-	cout<<"Initializatione went good";
+	std::cout<<"Initializatione went good";
 
 	return 0;
 }

@@ -5,7 +5,7 @@ class Node
 		int priority;
 		Node* next_value_ptr;
 		Node();
-}
+};
 
 class LinkedList
 {
@@ -13,6 +13,5 @@ class LinkedList
 		Node* head;
 	public:
 		LinkedList();
-		~LinkedList();
 
 };
