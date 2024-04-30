@@ -29,6 +29,7 @@ void LinkedList::Insert(int value, int priority)
 		if(priority>head->priority)
 		{
 			node->next_value_ptr=head;
+			head->prev_value_ptr=node;
 			head=node;
 
 		}
@@ -43,4 +44,26 @@ void LinkedList::Insert(int value, int priority)
 	node->priority=priority;
 	size++;
 }
+
+int LinkedList::get_size()
+{
+	return size;
+}
+
+void LinkedList::find_max_prio() //szukanie wezla z 2 najwieszkym prio poza headem
+{
+	Node* curr = new Node;
+/*	if(size==1)
+	{
+		
+	}
+*/
+}
+
+Node* LinkedList::peek()
+{
+	return head;
+}
+
+
 

@@ -17,5 +17,11 @@ class LinkedList
 	public:
 		LinkedList();
 		void Insert(int, int);
+		int get_size();
+		void find_max_prio();
+		Node* peek();
 
 };
+
+
+
