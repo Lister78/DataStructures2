@@ -21,6 +21,8 @@ class LinkedList
 		Node* find_max_prio();
 		Node* peek();
 		Node* extract_max();
+		void modify_key(int,int);
+		void move_after_modify(Node*);
 };
 
 
