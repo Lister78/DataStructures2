@@ -18,9 +18,9 @@ class LinkedList
 		LinkedList();
 		void Insert(int, int);
 		int get_size();
-		void find_max_prio();
+		Node* find_max_prio();
 		Node* peek();
-
+		Node* extract_max();
 };
 
 
