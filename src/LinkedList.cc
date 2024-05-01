@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
 #include "LinkedList.h"
 Node::Node()
 {
@@ -119,16 +120,39 @@ void LinkedList::modify_key(int looking_value, int new_prio)
 	Node* temp = new Node;
 	int count_of_elements;
 	temp = head;
+	int position=1;
 	if(size==1)
 	{
 		if(looking_value==head->node_value)
 		{
-			std::cout<<"Znaleziono: "<<looking_value<<" na 1 pozycji. Stary priorytet: "<< head->priority<<" nowy priorytet: "<<new_prio<<std::endl; //TODO zrobione jak debil, ew. poprawic
+			std::cout<<"Znaleziono: "<<looking_value<<" na 1 pozycji. Stary priorytet: "<< head->priority<<" nowy priorytet: "<<new_prio<<std::endl; 
 			count_of_elements++;
-			//temp = find_max_prio(); for example to next cases
-			//if(temp->priority<new_prio)
 			head->priority=new_prio;
 		} 
+	}
+	else if(size>1)
+	{
+		std::vector<Node*> nodes_with_looking_value;
+		for(int i=1;i<size;i++)
+		{
+			if(looking_value==temp->node_value)
+			{
+				nodes_with_looking_value.push_back(temp);
+				count_of_elements++;
+				std::cout<<count_of_elements<<".Znaleziono wezel z podana wartoscia na pozycji: "<<position<<" o priorytecie";
+			}
+			temp=temp->next_value_ptr;
+			position++;
+		}
+		std::cout<<"Priorytet ktorego wezla chcesz zmienic?";
+		std::cin>>position;
+		temp=nodes_with_looking_value[position-1];
+		if(new_prio>=head->priority&&temp==head)
+			head->priority=new_prio;
+		else if(new_prio<head->priority&&temp==tail)
+			tail->priority=new_prio;
+		else
+			move_after_modify(temp,new_prio);
 	}
 	//TODO rest     Jak znajdziesz i wybierzesz do zmiany heada to sprawdzasz funkcja przed zmiana jaki jest 2 najwieksza prio i sprawdzasz czy jest ona wieksza niz nowe prio jak nie to zmieniasz prio, ale nie zmieniasz heada jak tak to przerzucasz heada na taila i robisz juz normalnie //wiadomosc dla mnie zebym skumal jutro ocb
 	
@@ -136,9 +160,9 @@ void LinkedList::modify_key(int looking_value, int new_prio)
 		std::cout<<"Nie znaleziono elementu o takiej wartosci"<<std::endl;
 }
 
-void LinkedList::move_after_modify(Node* curr)
+void LinkedList::move_after_modify(Node* curr, int new_prio)
 {
-	if(curr->priority>head->priority&&curr!=head)
+	if(new_prio>head->priority&&curr!=head)
 	{
 		if(curr==tail)
 		{
@@ -181,7 +205,7 @@ void LinkedList::move_after_modify(Node* curr)
 				tail=head;
 				temp->next_value_ptr=head->next_value_ptr;
 				head->next_value_ptr->prev_value_ptr=temp;
-				head=temp;							//DO PRZENIESIENA DO NASTEPNEJ FUNKCJI WARUNEK SIE NIE SPELNI BO WYKLUCZA GO WYZSZY IF
+				head=temp;
 				tail->next_value_ptr=nullptr;
 				temp->prev_value_ptr=nullptr; 					//nie wiem juz co sie dizeje do sprawdzenia TODO
 
@@ -196,5 +220,6 @@ void LinkedList::move_after_modify(Node* curr)
 		tail=curr;
 
 	}
+	curr->priority=new_prio;
 }
 

@@ -22,7 +22,7 @@ class LinkedList
 		Node* peek();
 		Node* extract_max();
 		void modify_key(int,int);
-		void move_after_modify(Node*);
+		void move_after_modify(Node*, int);
 };
 
 
