@@ -13,6 +13,7 @@ class LinkedList
 	private:
 		Node* head;
 		Node* tail;
+		Node* maxPriorityNode; 
 		int size;
 	public:
 		LinkedList();
