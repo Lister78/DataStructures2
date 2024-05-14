@@ -11,4 +11,8 @@ set(LINKED_LIST "src/LinkedList.cc")
 
 list(APPEND SOURCES ${LINKED_LIST})
 
+set(KOPIEC "src/PriorityQueueInHeap.cc")
+
+list(APPEND SOURCES ${KOPIEC})
+
 add_executable(main ${SOURCES})

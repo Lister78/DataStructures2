@@ -24,6 +24,7 @@ class LinkedList
 		Node* extract_max();
 		void modify_key(int,int);
 		void move_after_modify(Node*, int);
+		void clear();
 };
 
 
