@@ -5,7 +5,7 @@
 #include "LinkedList.h"
 #include "PriorityQueueInHeap.h"
 
-
+// Funkcji do pomiaru czasu wykonania operacji
 template<typename Func>
 double measureExecutionTime(Func&& func) {
     auto start = std::chrono::steady_clock::now();
@@ -16,7 +16,7 @@ double measureExecutionTime(Func&& func) {
 
 
 
-
+// Funkcja przygotowująca dane testowe dla listy oraz kopca
 void prepareData(int choice, int size, LinkedList& Lista, PriorityQueueInHeap<int, int>& Kopiec) {
     if (choice == 1){
     	// Tworzenie listy wiązanej
@@ -39,10 +39,10 @@ int main() {
     int choice;
     LinkedList Lista;
     PriorityQueueInHeap <int, int> Kopiec;
-
+    
     std::vector<int> sizes = {6000, 8000, 10000, 20000, 40000, 60000, 80000, 100000};
 
-
+    // Menu
     while (1) {
         std::cout << "Wybierz strukturę:\n1. Lista wiązana\n2. Kopiec\n";
         std::cin >> choice;
@@ -147,13 +147,15 @@ int main() {
                                     totalTime += measureExecutionTime([&]() { Lista.get_size(); });
                                 }
                                 std::cout << "Średni czas operacji get_size na Liście" << size << ": " << totalTime / 100 << " microseconds\n";
+                                std::cout << "Rozmiar listy: " << Lista.get_size() << "\n";
+                           
                                 
                         }
                             
                             break;
                         }
                         case 6: {
-                            break; // Wyjście z wewnętrznej pętli
+                            break; 
                         }
                         case 7: {
                             int numElements;
@@ -298,7 +300,7 @@ int main() {
                             break;
                         }
                         case 6: {
-                            break; // Wyjście z wewnętrznej pętli
+                            break; 
                         }
                         case 7: {
                             int numElements;
